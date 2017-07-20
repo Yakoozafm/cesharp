@@ -31,16 +31,14 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iranyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.taszimozgasDataSet = new taszimozgas_c.taszimozgasDataSet();
-            this.taszimozgasDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewLinkColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.iranyTableAdapter = new taszimozgas_c.taszimozgasDataSetTableAdapters.iranyTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iranyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -51,60 +49,49 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
-            this.dataGridView1.DataSource = this.taszimozgasDataSetBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(31, 23);
+            this.idDataGridViewTextBoxColumn,
+            this.nevDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.iranyBindingSource;
+            this.dataGridView1.Enabled = false;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(556, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(595, 188);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            // 
+            // nevDataGridViewTextBoxColumn
+            // 
+            this.nevDataGridViewTextBoxColumn.DataPropertyName = "Nev";
+            this.nevDataGridViewTextBoxColumn.HeaderText = "Nev";
+            this.nevDataGridViewTextBoxColumn.Name = "nevDataGridViewTextBoxColumn";
+            // 
+            // iranyBindingSource
+            // 
+            this.iranyBindingSource.DataMember = "irany";
+            this.iranyBindingSource.DataSource = this.taszimozgasDataSet;
             // 
             // taszimozgasDataSet
             // 
             this.taszimozgasDataSet.DataSetName = "taszimozgasDataSet";
             this.taszimozgasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // taszimozgasDataSetBindingSource
+            // iranyTableAdapter
             // 
-            this.taszimozgasDataSetBindingSource.DataSource = this.taszimozgasDataSet;
-            this.taszimozgasDataSetBindingSource.Position = 0;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Column2";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Column3";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Column4";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Column5";
-            this.Column5.Name = "Column5";
+            this.iranyTableAdapter.ClearBeforeFill = true;
             // 
             // Form1
             // 
@@ -115,9 +102,10 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iranyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -126,13 +114,11 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewButtonColumn Column1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewImageColumn Column3;
-        private System.Windows.Forms.DataGridViewLinkColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.BindingSource taszimozgasDataSetBindingSource;
         private taszimozgasDataSet taszimozgasDataSet;
+        private System.Windows.Forms.BindingSource iranyBindingSource;
+        private taszimozgasDataSetTableAdapters.iranyTableAdapter iranyTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nevDataGridViewTextBoxColumn;
     }
 }
 

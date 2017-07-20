@@ -16,5 +16,20 @@ namespace taszimozgas_c
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'taszimozgasDataSet.irany' table. You can move, or remove it, as needed.
+            this.iranyTableAdapter.Fill(this.taszimozgasDataSet.irany);
+            
+            dataGridView1.BackgroundColor = Color.DarkGray;
+            dataGridView1.Enabled = true;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell cell = dataGridView1.CurrentCell;
+            cell.Style.BackColor = Color.Black;
+        }
     }
 }
