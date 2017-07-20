@@ -31,5 +31,23 @@ namespace mozgo_teszt
             this.iranyTableAdapter.Fill(this.taszimozgasDataSet.irany);
 
         }
+
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.iskolaTableAdapter.FillBy(this.taszimozgasDataSet.iskola);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void iranyBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
