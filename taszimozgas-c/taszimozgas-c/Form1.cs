@@ -28,8 +28,36 @@ namespace taszimozgas_c
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DataGridViewCell cell = dataGridView1.CurrentCell;
-            cell.Style.BackColor = Color.Black;
+            Application.Exit();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void iranyBindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fillBy1ToolStripButton_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void q_iranyosToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.iranyTableAdapter.q_iranyos(this.taszimozgasDataSet.irany);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

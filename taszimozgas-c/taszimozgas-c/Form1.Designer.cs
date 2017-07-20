@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iranyBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -47,7 +48,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 35);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "&Kilépés";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -62,10 +63,18 @@
             this.nevDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.iranyBindingSource;
             this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 71);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(595, 188);
             this.dataGridView1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(80, 292);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -83,6 +92,7 @@
             // 
             this.iranyBindingSource.DataMember = "irany";
             this.iranyBindingSource.DataSource = this.taszimozgasDataSet;
+            this.iranyBindingSource.CurrentChanged += new System.EventHandler(this.iranyBindingSource_CurrentChanged);
             // 
             // taszimozgasDataSet
             // 
@@ -98,6 +108,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 446);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -107,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iranyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSet)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -119,6 +131,7 @@
         private taszimozgasDataSetTableAdapters.iranyTableAdapter iranyTableAdapter;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nevDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

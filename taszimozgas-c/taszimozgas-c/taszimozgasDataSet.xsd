@@ -30,7 +30,16 @@
               <Mapping SourceColumn="Id" DataSetColumn="Id" />
               <Mapping SourceColumn="Nev" DataSetColumn="Nev" />
             </Mappings>
-            <Sources />
+            <Sources>
+              <DbSource ConnectionRef="taszimozgasConnectionString (Settings)" DbObjectName="taszimozgas.&quot;public&quot;.irany" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="q_iranyos" GenerateMethods="Fill" GenerateShortCommands="true" GeneratorSourceName="q_iranyos" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="q_iranyos">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT "Id", "Nev" FROM "public"."irany"</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
           </TableAdapter>
         </Tables>
         <Sources />
@@ -40,7 +49,7 @@
   <xs:element name="taszimozgasDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="taszimozgasDataSet" msprop:Generator_UserDSName="taszimozgasDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="irany" msprop:Generator_TableClassName="iranyDataTable" msprop:Generator_TableVarName="tableirany" msprop:Generator_TablePropName="irany" msprop:Generator_RowDeletingName="iranyRowDeleting" msprop:Generator_RowChangingName="iranyRowChanging" msprop:Generator_RowEvHandlerName="iranyRowChangeEventHandler" msprop:Generator_RowDeletedName="iranyRowDeleted" msprop:Generator_UserTableName="irany" msprop:Generator_RowChangedName="iranyRowChanged" msprop:Generator_RowEvArgName="iranyRowChangeEvent" msprop:Generator_RowClassName="iranyRow">
+        <xs:element name="irany" msprop:Generator_TableClassName="iranyDataTable" msprop:Generator_TableVarName="tableirany" msprop:Generator_RowChangedName="iranyRowChanged" msprop:Generator_TablePropName="irany" msprop:Generator_RowDeletingName="iranyRowDeleting" msprop:Generator_RowChangingName="iranyRowChanging" msprop:Generator_RowEvHandlerName="iranyRowChangeEventHandler" msprop:Generator_RowDeletedName="iranyRowDeleted" msprop:Generator_RowClassName="iranyRow" msprop:Generator_UserTableName="irany" msprop:Generator_RowEvArgName="iranyRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_UserColumnName="Id" type="xs:int" />
@@ -52,6 +61,10 @@
                 </xs:simpleType>
               </xs:element>
             </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
           </xs:complexType>
         </xs:element>
       </xs:choice>
