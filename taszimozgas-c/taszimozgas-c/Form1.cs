@@ -24,7 +24,7 @@ namespace taszimozgas_c
         {
             InitializeComponent();
 
-            connectionString = ConfigurationManager.ConnectionStrings["taszimozgas_c.Properties.Settings.taszimozgasConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["taszimozgasCS"].ConnectionString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
