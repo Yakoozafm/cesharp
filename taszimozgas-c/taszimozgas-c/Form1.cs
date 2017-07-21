@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
 using Npgsql;
+using System.Data.Odbc;
 
 namespace taszimozgas_c
 {
@@ -51,7 +52,7 @@ namespace taszimozgas_c
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show(listBox1.SelectedValue.ToString());
+            //MessageBox.Show(listBox1.SelectedValue.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
