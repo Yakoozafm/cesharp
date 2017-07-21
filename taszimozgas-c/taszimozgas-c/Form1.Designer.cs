@@ -28,18 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nevDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iranyBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.taszimozgasDataSet = new taszimozgas_c.taszimozgasDataSet();
-            this.iranyTableAdapter = new taszimozgas_c.taszimozgasDataSetTableAdapters.iranyTableAdapter();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iranyBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -54,71 +46,35 @@
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nevDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.iranyBindingSource;
-            this.dataGridView1.Enabled = false;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 71);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(595, 188);
+            this.dataGridView1.Size = new System.Drawing.Size(662, 150);
             this.dataGridView1.TabIndex = 1;
             // 
-            // textBox1
+            // listBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(80, 292);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // nevDataGridViewTextBoxColumn
-            // 
-            this.nevDataGridViewTextBoxColumn.DataPropertyName = "Nev";
-            this.nevDataGridViewTextBoxColumn.HeaderText = "Nev";
-            this.nevDataGridViewTextBoxColumn.Name = "nevDataGridViewTextBoxColumn";
-            // 
-            // iranyBindingSource
-            // 
-            this.iranyBindingSource.DataMember = "irany";
-            this.iranyBindingSource.DataSource = this.taszimozgasDataSet;
-            this.iranyBindingSource.CurrentChanged += new System.EventHandler(this.iranyBindingSource_CurrentChanged);
-            // 
-            // taszimozgasDataSet
-            // 
-            this.taszimozgasDataSet.DataSetName = "taszimozgasDataSet";
-            this.taszimozgasDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iranyTableAdapter
-            // 
-            this.iranyTableAdapter.ClearBeforeFill = true;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(416, 230);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(209, 95);
+            this.listBox1.TabIndex = 2;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 446);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iranyBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.taszimozgasDataSet)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -126,12 +82,7 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private taszimozgasDataSet taszimozgasDataSet;
-        private System.Windows.Forms.BindingSource iranyBindingSource;
-        private taszimozgasDataSetTableAdapters.iranyTableAdapter iranyTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nevDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 

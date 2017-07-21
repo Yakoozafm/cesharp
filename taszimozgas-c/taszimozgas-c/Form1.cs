@@ -7,57 +7,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
+using Npgsql;
 
 namespace taszimozgas_c
 {
     public partial class Form1 : Form
     {
+        NpgsqlConnection connection;
+        //SqlConnection connection;
+        string connectionString;
+        NpgsqlDataAdapter adapter;
+
         public Form1()
         {
             InitializeComponent();
+
+            connectionString = ConfigurationManager.ConnectionStrings["taszimozgas_c.Properties.Settings.taszimozgasConnectionString"].ConnectionString;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'taszimozgasDataSet.irany' table. You can move, or remove it, as needed.
-            this.iranyTableAdapter.Fill(this.taszimozgasDataSet.irany);
-            
-            dataGridView1.BackgroundColor = Color.DarkGray;
-            dataGridView1.Enabled = true;
+            Felelosleker();
+        }
+
+        private void Felelosleker()
+        {
+
+            using (connection = new NpgsqlConnection(connectionString))
+            using (adapter = new NpgsqlDataAdapter("Select * From felelos", connection))
+            {
+                connection.Open();
+                DataTable felelosTabla = new DataTable();
+                adapter.Fill(felelosTabla);
+                dataGridView1.DataSource = felelosTabla;
+
+                listBox1.DataSource = felelosTabla;
+                listBox1.DisplayMember = "Nev";
+                listBox1.ValueMember = "id";
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            MessageBox.Show(listBox1.SelectedValue.ToString());
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
             Application.Exit();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void iranyBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void fillBy1ToolStripButton_Click(object sender, EventArgs e)
-        {
-           
-
-        }
-
-        private void q_iranyosToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.iranyTableAdapter.q_iranyos(this.taszimozgasDataSet.irany);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
         }
     }
 }
