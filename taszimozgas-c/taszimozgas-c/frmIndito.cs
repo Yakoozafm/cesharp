@@ -9,20 +9,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
+
 namespace taszimozgas_c
 {
-    
+      
 
     public partial class frmIndito : Form
     {
-       
+        
+
         public frmIndito()
         {
             InitializeComponent();
         }
-
         
-
+       
         private void button1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Helló!","Üzenet ablak",MessageBoxButtons.YesNoCancel);
@@ -104,9 +107,12 @@ namespace taszimozgas_c
 
             frmLogin formlogin = new frmLogin();
             DialogResult belep = formlogin.ShowDialog();
+            DB.Kapcsolodas();
+            //DB.Login();
             if (belep == DialogResult.OK)
             {
                 
+
             } else
                 MessageBox.Show("Visszavont belépés.");
         }
