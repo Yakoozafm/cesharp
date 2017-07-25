@@ -11,12 +11,17 @@ using System.Windows.Forms;
 
 namespace taszimozgas_c
 {
-    public partial class Form2 : Form
+    
+
+    public partial class frmIndito : Form
     {
-        public Form2()
+       
+        public frmIndito()
         {
             InitializeComponent();
         }
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -96,6 +101,14 @@ namespace taszimozgas_c
         private void button4_Click(object sender, EventArgs e)
         {
             button3_Click(null, null);
+
+            frmLogin formlogin = new frmLogin();
+            DialogResult belep = formlogin.ShowDialog();
+            if (belep == DialogResult.OK)
+            {
+                
+            } else
+                MessageBox.Show("Visszavont belépés.");
         }
     }
 }
