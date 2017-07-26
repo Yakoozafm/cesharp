@@ -13,8 +13,9 @@ namespace taszimozgas_c
 {
     class DB
     {
-        public static String Felhnev;
-        public static String Jelsz;
+        public static bool Belepve = false;
+        public static string LogName ="";
+        public static Boolean AdminUser = false;
 
         static NpgsqlConnection connection;
         static NpgsqlDataAdapter adapter;
@@ -24,49 +25,51 @@ namespace taszimozgas_c
 
         public static void Kapcsolodas()
         {
-            using (connection = new NpgsqlConnection(connectionString))
+            //using (connection = new NpgsqlConnection(connectionString))
             
-            {
-               connection.Open();
-                
-            }
+            //{
+               
+            //}
         }
         public static bool Login(String str_login, String str_password)
             {
             connection = new NpgsqlConnection(connectionString);
-            //connection.Open();
             NpgsqlParameter login = new NpgsqlParameter("LOGIN",DbType.String);
             NpgsqlParameter password = new NpgsqlParameter("PASSWORD", DbType.String);
             login.Value = str_login;
             password.Value = str_password;
 
-            //using (adapter = new NpgsqlDataAdapter("Select * From public.user where login = @LOGIN and password = @PASSWORD", connection))
-            //{
             command = new NpgsqlCommand("Select * From public.user where login = @LOGIN and password = md5(@PASSWORD)", connection);
             command.Parameters.Add(login);
             command.Parameters.Add(password);
-
             tbllogin = new DataTable();
             
             adapter = new NpgsqlDataAdapter(command);
             adapter.Fill(tbllogin);
-            //lb.DataSource = tbllogin;
-            //lb.DisplayMember = "login";
-            //lb.ValueMember = "id";
-            MessageBox.Show(tbllogin.Rows.Count.ToString());
+            
             if (tbllogin.Rows.Count==1)
             {
-                return true;
+
+                DataRow dr = tbllogin.Rows[0];
+                if (Convert.ToBoolean(dr["engedve"]))
+                {
+                    AdminUser = Convert.ToBoolean(dr["admin"]);
+                    Belepve = true;
+                    LogName = login.Value.ToString();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("Zárolt felhasználó, nem léphet be.","Engedély megtagadva.", MessageBoxButtons.OK);
+                    return false;
+                }
             }
             else
             {
+                Belepve = false;
                 return false;
             }
-            
-            //}
         }
-                
-
     }
 }
 

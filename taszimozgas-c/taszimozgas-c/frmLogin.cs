@@ -56,7 +56,7 @@ namespace taszimozgas_c
                 else
                 {
                     DialogResult = DialogResult.None;
-                    MessageBox.Show("Nem jók a hitelesítési adatok.", "Hiba",MessageBoxButtons.OK);
+                    txtUser.Text = "Rosszak a hitelesítő adatok";
                 }
             }
 

@@ -32,89 +32,95 @@ namespace taszimozgas_c
             this.Close();
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnMenu_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Add("Módosítás");
             if (panel1.Width != panel1.PreferredSize.Width)
-            {
-                //string source = "Hello World!";
-                //using (MD5 md5Hash = MD5.Create())
-                //{
-                //    string hash = GetMd5Hash(md5Hash, source);
-
-                //    Console.WriteLine("The MD5 hash of " + source + " is: " + hash + ".");
-
-                //}
+            {  
                 panel1.Width = panel1.PreferredSize.Width;
-                button3.Left = panel1.Width - button3.Width;
-                button3.Top = 0;
-                //button3.BackColor = panel1.BackColor;
+                btnMenu.Left = panel1.Width - btnMenu.Width;
             }
             else
             {
                 panel1.Width = 0;
-                button3.Left = panel1.Width;
-                //panel1.Top = btnLogin.Height;
-                
+                btnMenu.Left = panel1.Width;
             }
 
-            }
-        
-
-        private void Form2_Resize(object sender, EventArgs e)
-        {
-            button3_Click(null,null);
         }
+
+
+        private void igazit()
+        {
+            btnMenu.Top = 0;
+        }
+
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            button3_Click(null,null);
+            igazit();
             panel1.Width = 0;
-            button3.Left = panel1.Width;
-            btnLogin.Top = button3.Height;
+            btnMenu.Left = panel1.Width;
+            btnLogin.Top = btnMenu.Height;
             //panel1.Top = btnLogin.Height;
+            if (!DB.Belepve)
+            {
+                button4_Click(null,null);
+            }
         }
 
-            static string GetMd5Hash(MD5 md5Hash, string input)
-            {
-
-                // Convert the input string to a byte array and compute the hash.
-                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
-
-                // Create a new Stringbuilder to collect the bytes
-                // and create a string.
-                StringBuilder sBuilder = new StringBuilder();
-
-                // Loop through each byte of the hashed data 
-                // and format each one as a hexadecimal string.
-                for (int i = 0; i < data.Length; i++)
-                {
-                    sBuilder.Append(data[i].ToString("x2"));
-                }
-
-                // Return the hexadecimal string.
-                return sBuilder.ToString();
-            }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            button3_Click(null, null);
-
-            frmLogin formlogin = new frmLogin();
-            DialogResult belep = formlogin.ShowDialog();
-            DB.Kapcsolodas();
-            //DB.Login();
-            if (belep == DialogResult.OK)
+            //button3_Click(null, null);
+            if (DB.Belepve)
             {
-                
+                DialogResult ujlogin = MessageBox.Show("Már bejelentkezett " + DB.LogName + " néven."
+                    + "\nÚjra belép?", "Belépés megerősítése", MessageBoxButtons.YesNo);
+                if (ujlogin == DialogResult.Yes)
+                {
+                    frmLogin formlogin = new frmLogin();
+                    DialogResult belep = formlogin.ShowDialog();
+                }
+                else
+                {
 
-            } else
-                MessageBox.Show("Visszavont belépés.");
+                }
+            }
+            else
+            {
+
+                frmLogin formlogin = new frmLogin();
+                DialogResult belep = formlogin.ShowDialog();
+                btnMenu_Click(null, null);
+            }
+        }
+
+        private void btnKilepes_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            if (DB.AdminUser)
+            {
+                MessageBox.Show("Adminisztrációs tennivalók.");
+            }
+            else
+            {
+                MessageBox.Show("Nincs jogosultsága ehhez a tartalomhoz.", "Hozzáférés megtagadva" , MessageBoxButtons.OK);
+
+            }
+        }
+
+        private void btnMozgas_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Mozgás rögzítés");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Lekérdezések.");
         }
     }
 }
