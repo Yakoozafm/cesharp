@@ -43,6 +43,7 @@
             this.dblabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dbuser = new System.Windows.Forms.ToolStripStatusLabel();
             this.dbadmin = new System.Windows.Forms.ToolStripStatusLabel();
+            this.localip = new System.Windows.Forms.ToolStripStatusLabel();
             this.panel1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -137,7 +138,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dblabel,
             this.dbuser,
-            this.dbadmin});
+            this.dbadmin,
+            this.localip});
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip1_ItemClicked);
@@ -158,6 +160,12 @@
             this.dbadmin.Name = "dbadmin";
             resources.ApplyResources(this.dbadmin, "dbadmin");
             // 
+            // localip
+            // 
+            this.localip.BackColor = System.Drawing.Color.DimGray;
+            this.localip.Name = "localip";
+            resources.ApplyResources(this.localip, "localip");
+            // 
             // frmIndito
             // 
             resources.ApplyResources(this, "$this");
@@ -166,7 +174,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnMenu);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.IsMdiContainer = true;
             this.Name = "frmIndito";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -193,5 +201,6 @@
         private System.Windows.Forms.ToolStripStatusLabel dblabel;
         private System.Windows.Forms.ToolStripStatusLabel dbuser;
         private System.Windows.Forms.ToolStripStatusLabel dbadmin;
+        private System.Windows.Forms.ToolStripStatusLabel localip;
     }
 }

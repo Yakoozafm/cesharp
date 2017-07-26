@@ -63,21 +63,49 @@ namespace taszimozgas_c
 
         private void checkdb()
         {
+            DB.GetLocalIPAddress();
             if (DB.Belepve)
             {
                 statusStrip1.Items[0].Text = "Adatbázis állapot: Nyitva.";
                 statusStrip1.Items[1].Text = "Belépett felhasználó: " + DB.LogName;
                 statusStrip1.Items[2].Text  ="Admin felhasználó: " + DB.AdminUser;
+                statusStrip1.Items[3].Text = "Helyi ip cím: " + DB.ipk;
             }
             else
             {
                 statusStrip1.Items[0].Text = "Adatbázis állapot: Zárolt.";
                 statusStrip1.Items[1].Text = "Belépett felhasználó: " + DB.LogName;
                 statusStrip1.Items[2].Text = "Admin felhasználó: " + DB.AdminUser;
+                statusStrip1.Items[3].Text = "Helyi ip cím: " + DB.ipk;
             }
         }
         private void Form2_Load(object sender, EventArgs e)
         {
+
+            MdiClient ctlMDI;
+
+            // Loop through all of the form's controls looking
+            // for the control of type MdiClient.
+            foreach (Control ctl in this.Controls)
+            {
+                try
+                {
+                    // Attempt to cast the control to type MdiClient.
+                    ctlMDI = (MdiClient)ctl;
+
+                    // Set the BackColor of the MdiClient control.
+                    ctlMDI.BackColor = this.BackColor;
+                }
+                catch (InvalidCastException exc)
+                {
+                    // Catch and ignore the error if casting failed.
+                }
+            }
+
+
+
+
+
             igazit();
             checkdb();
             panel1.Width = 0;
@@ -146,7 +174,9 @@ namespace taszimozgas_c
 
         private void btnMozgas_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Mozgás rögzítés");
+            Form1 form1 = new Form1();
+            form1.MdiParent = this;
+            form1.Show();
             checkdb();
         }
 

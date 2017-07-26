@@ -8,6 +8,8 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Data;
 using System.Windows.Forms;
+using System.Net;
+using System.Net.Sockets;
 
 namespace taszimozgas_c
 {
@@ -16,12 +18,27 @@ namespace taszimozgas_c
         public static bool Belepve = false;
         public static string LogName ="";
         public static Boolean AdminUser = false;
+        public static int userid = -1;
+        public static string ipk;
 
         static NpgsqlConnection connection;
         static NpgsqlDataAdapter adapter;
         static DataTable tbllogin;
         static NpgsqlCommand command;
         static string connectionString = ConfigurationManager.ConnectionStrings["taszimozgasCS"].ConnectionString;
+
+        public static void GetLocalIPAddress()
+        {
+            ipk = "";
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    ipk += ip.ToString() + "---";
+                }
+            }
+        }
 
         public static void Kapcsolodas()
         {
@@ -50,12 +67,15 @@ namespace taszimozgas_c
             if (tbllogin.Rows.Count==1)
             {
 
+                
                 DataRow dr = tbllogin.Rows[0];
                 if (Convert.ToBoolean(dr["engedve"]))
                 {
                     AdminUser = Convert.ToBoolean(dr["admin"]);
                     Belepve = true;
                     LogName = login.Value.ToString();
+                    userid = Convert.ToInt32(dr["id"]);
+                    logol();
                     return true;
                 }
                 else
@@ -69,6 +89,31 @@ namespace taszimozgas_c
                 Belepve = false;
                 return false;
             }
+        }
+        public static void logol()
+        {
+            command = new NpgsqlCommand("insert into public.naplo (juser, ip, idopont) values (@LOGNAME, @IP, @IDOPONT)", connection);
+            NpgsqlParameter logname = new NpgsqlParameter("LOGNAME", DbType.Int32);
+            NpgsqlParameter ip = new NpgsqlParameter("IP", DbType.String);
+            NpgsqlParameter idopont = new NpgsqlParameter("IDOPONT", DbType.Date);
+
+            logname.Value = Convert.ToInt32(userid);
+            ip.Value = ipk;
+            DateTime most = DateTime.Now;
+            idopont.Value = most;
+
+            command.Parameters.Add(logname);
+            command.Parameters.Add(ip);
+            command.Parameters.Add(idopont);
+            
+
+
+            if (connection.State == ConnectionState.Closed)
+            {
+                connection.Open();
+            }
+            
+            command.ExecuteNonQuery();
         }
     }
 }
