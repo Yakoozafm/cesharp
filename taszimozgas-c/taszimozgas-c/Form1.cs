@@ -31,6 +31,11 @@ namespace taszimozgas_c
         private void Form1_Load(object sender, EventArgs e)
         {
             Felelosleker();
+            DB.Kapcs_Eszkoz();
+            comboBox1.DataSource = DB.tblEszkoz;
+            comboBox1.ValueMember = "id";
+            comboBox1.DisplayMember = "Nev";
+
         }
 
         private void Felelosleker()
@@ -47,6 +52,9 @@ namespace taszimozgas_c
                 listBox1.DataSource = felelosTabla;
                 listBox1.DisplayMember = "Nev";
                 listBox1.ValueMember = "id";
+
+                
+
             }
         }
 
