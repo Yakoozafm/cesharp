@@ -16,14 +16,14 @@ namespace taszimozgas_c
     class DB
     {
         public static bool Belepve = false;
-        public static string LogName ="";
+        public static string LogName = "";
         public static Boolean AdminUser = false;
         public static int userid = -1;
         public static string ipk;
-
-        static NpgsqlConnection connection;
+        public static NpgsqlConnection connection;
         static NpgsqlDataAdapter adapter;
         public static NpgsqlDataAdapter iranyadapter;
+        public static NpgsqlCommandBuilder iranycb;
         public static DataTable tbllogin;
         public static DataTable tblEszkoz;
         public static DataTable tblFelelos;
@@ -36,6 +36,8 @@ namespace taszimozgas_c
         public static DataTable tblOprendszer;
         public static DataTable tblTarhely;
         public static DataTable tblTechnologia;
+
+        
 
         static NpgsqlCommand command;
         static string connectionString = ConfigurationManager.ConnectionStrings["taszimozgasCS"].ConnectionString;
@@ -158,6 +160,19 @@ namespace taszimozgas_c
 
         public static void Kapcs_Eszkoz()
         {
+            if (connection.State == ConnectionState.Closed)
+            {
+                try
+                {
+                    connection.Open();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Sikertelen kapcsolódás.");
+                    throw;
+                }
+                
+            }
             string sql = "Select * from eszkoz";
             command = new NpgsqlCommand(sql, connection);
             adapter = new NpgsqlDataAdapter(command);
@@ -268,9 +283,10 @@ namespace taszimozgas_c
 
         public static void Insert_Irany(string irany)
         {
+           
             string sql = "Insert into irany (nev) values ('" + irany + "')";
             command = new NpgsqlCommand(sql, connection);
-
+            
             try
             {
                 command.ExecuteNonQuery();

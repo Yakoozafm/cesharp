@@ -17,7 +17,6 @@ namespace taszimozgas_c
     public partial class Form1 : Form
     {
         NpgsqlConnection connection;
-        //SqlConnection connection;
         string connectionString;
         NpgsqlDataAdapter adapter;
 
@@ -41,26 +40,15 @@ namespace taszimozgas_c
             comboBox2.DataSource = DB.tblIrany;
             comboBox2.ValueMember = "id";
             comboBox2.DisplayMember = "Nev";
+
+            dataGridView2.DataSource = DB.tblIrany;
+            DB.iranycb = new NpgsqlCommandBuilder(DB.iranyadapter);
         }
 
         private void Felelosleker()
         {
 
-            using (connection = new NpgsqlConnection(connectionString))
-            using (adapter = new NpgsqlDataAdapter("Select * From felelos", connection))
-            {
-                connection.Open();
-                DataTable felelosTabla = new DataTable();
-                adapter.Fill(felelosTabla);
-                dataGridView1.DataSource = felelosTabla;
-
-                listBox1.DataSource = felelosTabla;
-                listBox1.DisplayMember = "Nev";
-                listBox1.ValueMember = "id";
-
-                
-
-            }
+           
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,5 +68,12 @@ namespace taszimozgas_c
             comboBox2.DataSource = DB.tblIrany;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DB.iranyadapter.Update(DB.tblIrany);
+            DB.tblIrany.Clear();
+            DB.iranyadapter.Fill(DB.tblIrany);
+            dataGridView2.Rows[dataGridView2.Rows.Count - 1].Selected = true;
+        }
     }
 }

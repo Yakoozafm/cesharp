@@ -112,7 +112,7 @@ namespace taszimozgas_c
             panel1.Width = 0;
             btnMenu.Left = panel1.Width;
             btnLogin.Top = btnMenu.Height;
-            //panel1.Top = btnLogin.Height;
+
             if (!DB.Belepve)
             {
                 button4_Click(null,null);
@@ -138,10 +138,11 @@ namespace taszimozgas_c
                     frmLogin formlogin = new frmLogin();
                     DialogResult belep = formlogin.ShowDialog();
                     checkdb();
+
                 }
                 else
                 {
-
+        
                 }
             }
             else
