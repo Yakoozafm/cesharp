@@ -23,6 +23,7 @@ namespace taszimozgas_c
 
         static NpgsqlConnection connection;
         static NpgsqlDataAdapter adapter;
+        public static NpgsqlDataAdapter iranyadapter;
         public static DataTable tbllogin;
         public static DataTable tblEszkoz;
         public static DataTable tblFelelos;
@@ -164,6 +165,124 @@ namespace taszimozgas_c
             adapter.Fill(tblEszkoz);
 
         }
-    }
+
+        public static void Kapcs_Felelos()
+        {
+            string sql = "Select * from felelos";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblFelelos = new DataTable();
+            adapter.Fill(tblFelelos);
+
+        }
+
+        public static void Kapcs_Irany()
+        {
+            string sql = "Select * from irany";
+            command = new NpgsqlCommand(sql, connection);
+            iranyadapter = new NpgsqlDataAdapter(command);
+            tblIrany = new DataTable();
+            iranyadapter.Fill(tblIrany);
+
+        }
+
+        public static void Kapcs_Forras()
+        {
+            string sql = "Select * from forras";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblForras = new DataTable();
+            adapter.Fill(tblForras);
+
+        }
+
+        public static void Kapcs_Iskola()
+        {
+            string sql = "Select * from iskola";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblIskola = new DataTable();
+            adapter.Fill(tblIskola);
+
+        }
+
+        public static void Kapcs_Megnevezes()
+        {
+            string sql = "Select * from megnevezes";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblMegnevezes = new DataTable();
+            adapter.Fill(tblMegnevezes);
+
+        }
+
+        public static void Kapcs_Mozgas()
+        {
+            string sql = "Select * from mozgas";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblMozgas = new DataTable();
+            adapter.Fill(tblMozgas);
+
+        }
+
+        public static void Kapcs_Naplo()
+        {
+            string sql = "Select * from naplo";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblNaplo = new DataTable();
+            adapter.Fill(tblNaplo);
+
+        }
+
+        public static void Kapcs_Oprendszer()
+        {
+            string sql = "Select * from oprendszer";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblOprendszer = new DataTable();
+            adapter.Fill(tblOprendszer);
+
+        }
+
+        public static void Kapcs_Tarhely()
+        {
+            string sql = "Select * from tarhely";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblTarhely = new DataTable();
+            adapter.Fill(tblTarhely);
+
+        }
+
+        public static void Kapcs_Technologia()
+        {
+            string sql = "Select * from technologia";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblTechnologia = new DataTable();
+            adapter.Fill(tblTechnologia);
+
+        }
+
+        public static void Insert_Irany(string irany)
+        {
+            string sql = "Insert into irany (nev) values ('" + irany + "')";
+            command = new NpgsqlCommand(sql, connection);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                tblIrany.Clear();
+                iranyadapter.Fill(tblIrany);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Valami hiba történt" + e.Message);
+            }
+        }
+
+    }   
 }
 

@@ -98,6 +98,7 @@ namespace taszimozgas_c
                 }
                 catch (InvalidCastException exc)
                 {
+                    
                     // Catch and ignore the error if casting failed.
                 }
             }

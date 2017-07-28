@@ -32,10 +32,15 @@ namespace taszimozgas_c
         {
             Felelosleker();
             DB.Kapcs_Eszkoz();
+            DB.Kapcs_Irany();
+
             comboBox1.DataSource = DB.tblEszkoz;
             comboBox1.ValueMember = "id";
             comboBox1.DisplayMember = "Nev";
 
+            comboBox2.DataSource = DB.tblIrany;
+            comboBox2.ValueMember = "id";
+            comboBox2.DisplayMember = "Nev";
         }
 
         private void Felelosleker()
@@ -68,5 +73,12 @@ namespace taszimozgas_c
 
             this.Close();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            DB.Insert_Irany("Brexit.");
+            comboBox2.DataSource = DB.tblIrany;
+        }
+
     }
 }
