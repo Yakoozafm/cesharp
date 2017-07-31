@@ -32,6 +32,7 @@ namespace taszimozgas_c
             Felelosleker();
             DB.Kapcs_Eszkoz();
             DB.Kapcs_Irany();
+            DB.Kapcs_Mozgas();
 
             comboBox1.DataSource = DB.tblEszkoz;
             comboBox1.ValueMember = "id";
@@ -40,6 +41,8 @@ namespace taszimozgas_c
             comboBox2.DataSource = DB.tblIrany;
             comboBox2.ValueMember = "id";
             comboBox2.DisplayMember = "Nev";
+
+            dataGridView1.DataSource = DB.tblMozgas; 
 
             dataGridView2.DataSource = DB.tblIrany;
             DB.iranycb = new NpgsqlCommandBuilder(DB.iranyadapter);

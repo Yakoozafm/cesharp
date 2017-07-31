@@ -36,6 +36,7 @@ namespace taszimozgas_c
         public static DataTable tblOprendszer;
         public static DataTable tblTarhely;
         public static DataTable tblTechnologia;
+        public static DataTable tblMozgatas;
 
         
 
@@ -238,6 +239,16 @@ namespace taszimozgas_c
             adapter = new NpgsqlDataAdapter(command);
             tblMozgas = new DataTable();
             adapter.Fill(tblMozgas);
+
+        }
+
+        public static void Kapcs_Mozgatas()
+        {
+            string sql = "Select * from mozgatas";
+            command = new NpgsqlCommand(sql, connection);
+            adapter = new NpgsqlDataAdapter(command);
+            tblMozgas = new DataTable();
+            adapter.Fill(tblMozgatas);
 
         }
 
