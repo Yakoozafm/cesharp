@@ -1,0 +1,10 @@
+Mozgás rögzítõ form:
+- Új irány gomb -> Új text mezõ + rögzítõ gomb
+- Új felelõs gomb -> Új felelõs form
+- Új eszköz gomb -> Új eszköz form
+- Új tárhely gomb -> Új tárhely form
+
+Elõzõ id meghatározása: Select eszkozid from mozgas order by datum desc limit 1
+
+Hiba rögzítõ form: Mozgásrögzítõ form
+
